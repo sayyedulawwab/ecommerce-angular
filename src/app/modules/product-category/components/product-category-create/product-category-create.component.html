@@ -1,0 +1,61 @@
+<section class="mx-auto w-1/2">
+  <form [formGroup]="productCategoryForm" (ngSubmit)="onSubmit()">
+    <div class="mb-6">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        id="name"
+        name="name"
+        formControlName="name"
+      />
+
+      <span
+        *ngIf="
+          productCategoryForm.get('name')?.touched &&
+          productCategoryForm.get('name')?.invalid
+        "
+      >
+        <span
+          *ngIf="productCategoryForm?.controls?.name?.errors?.['required']"
+          class="text-danger"
+          >Name is Required</span
+        >
+      </span>
+    </div>
+    <div class="mb-6">
+      <label
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        for="code"
+        >Code</label
+      >
+      <input
+        type="text"
+        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+        id="code"
+        name="code"
+        formControlName="code"
+      />
+
+      <span
+        *ngIf="
+          productCategoryForm.get('code')?.touched &&
+          productCategoryForm.get('code')?.invalid
+        "
+      >
+        <span
+          *ngIf="productCategoryForm?.controls?.code?.errors?.['required']"
+          class="text-danger"
+          >Code is Required</span
+        >
+      </span>
+    </div>
+    <button
+      type="submit"
+      [disabled]="productCategoryForm.invalid"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Save
+    </button>
+  </form>
+</section>
